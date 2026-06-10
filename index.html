@@ -25,15 +25,14 @@ body {
 }
 
 h2 {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: #333;
 }
 
 p {
-  margin-top: 0;
-  margin-bottom: 15px;
   color: #666;
   font-size: 13px;
+  margin-bottom: 15px;
 }
 
 input, select {
@@ -43,13 +42,6 @@ input, select {
   border-radius: 10px;
   border: 1px solid #ddd;
   font-size: 14px;
-}
-
-.file-box {
-  text-align: left;
-  font-size: 13px;
-  color: #444;
-  margin-top: 5px;
 }
 
 button {
@@ -68,6 +60,12 @@ button {
 button:hover {
   transform: scale(1.05);
 }
+
+.note {
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}
 </style>
 </head>
 
@@ -76,7 +74,9 @@ button:hover {
 <div class="card">
 
 <h2>👕 Ordina Maglietta</h2>
-<p>Compila i dati e allega la foto da stampare</p>
+
+<p>Compila i dati e poi invia il messaggio su WhatsApp.<br>
+📎 <b>La foto del design va allegata direttamente su WhatsApp</b></p>
 
 <input id="name" placeholder="Nome">
 <input id="email" placeholder="Email">
@@ -88,10 +88,11 @@ button:hover {
   <option value="XL">Taglia XL</option>
 </select>
 
-<input type="file" id="file" accept="image/*">
-<div class="file-box">📎 Allegare la foto della maglia o del design</div>
-
 <button onclick="send()">📲 Invia su WhatsApp</button>
+
+<div class="note">
+⚠️ Dopo aver aperto WhatsApp, allega la foto manualmente
+</div>
 
 </div>
 
@@ -101,23 +102,19 @@ function send() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const size = document.getElementById("size").value;
-  const file = document.getElementById("file").files[0];
-
-  if (!file) {
-    alert("Devi allegare una foto!");
-    return;
-  }
 
   const order = Math.floor(Math.random() * 100000);
 
-  const phone = "393283849591"; // 🔴 tuo numero WhatsApp
+  const phone = "39XXXXXXXXXX"; // 🔴 tuo numero WhatsApp
 
   const message =
 `🔥 NUOVO ORDINE #${order}
 👤 Nome: ${name}
 📧 Email: ${email}
 👕 Taglia: ${size}
-📎 Foto allegata (controllare file nel dispositivo del cliente)`;
+
+📎 IMPORTANTE:
+La foto del design verrà inviata in chat (allega dopo questo messaggio)`;
 
   const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
 
