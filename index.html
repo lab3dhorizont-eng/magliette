@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Ordina Maglietta</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background: white;
+  width: 340px;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #666;
+  font-size: 13px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.file-box {
+  text-align: left;
+  font-size: 13px;
+  color: #444;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>👕 Ordina Maglietta</h2>
+<p>Compila i dati e allega la foto da stampare</p>
+
+<input id="name" placeholder="Nome">
+<input id="email" placeholder="Email">
+
+<select id="size">
+  <option value="S">Taglia S</option>
+  <option value="M">Taglia M</option>
+  <option value="L">Taglia L</option>
+  <option value="XL">Taglia XL</option>
+</select>
+
+<input type="file" id="file" accept="image/*">
+<div class="file-box">📎 Allegare la foto della maglia o del design</div>
+
+<button onclick="send()">📲 Invia su WhatsApp</button>
+
+</div>
+
+<script>
+function send() {
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const size = document.getElementById("size").value;
+  const file = document.getElementById("file").files[0];
+
+  if (!file) {
+    alert("Devi allegare una foto!");
+    return;
+  }
+
+  const order = Math.floor(Math.random() * 100000);
+
+  const phone = "393283849591"; // 🔴 tuo numero WhatsApp
+
+  const message =
+`🔥 NUOVO ORDINE #${order}
+👤 Nome: ${name}
+📧 Email: ${email}
+👕 Taglia: ${size}
+📎 Foto allegata (controllare file nel dispositivo del cliente)`;
+
+  const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
