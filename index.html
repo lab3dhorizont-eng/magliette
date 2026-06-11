@@ -2,69 +2,132 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ordina Maglietta</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
 
-.card {
-  background: white;
-  width: 340px;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-  text-align: center;
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    padding:20px;
 }
 
-h2 {
-  margin-bottom: 10px;
-  color: #333;
+/* CARD GLASS */
+.card{
+    width:100%;
+    max-width:420px;
+    padding:25px;
+    border-radius:22px;
+
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.4);
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+
+    text-align:center;
 }
 
-p {
-  color: #666;
-  font-size: 13px;
-  margin-bottom: 15px;
+/* TESTO */
+h2{
+    color:#fff;
+    margin-bottom:10px;
+    text-shadow:0 2px 10px rgba(0,0,0,0.35);
 }
 
-input, select {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  font-size: 14px;
+.description{
+    color:#fff;
+    font-size:14px;
+    margin-bottom:15px;
+    line-height:1.4;
+    text-shadow:0 2px 10px rgba(0,0,0,0.35);
 }
 
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #43e97b, #38f9d7);
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.2s;
+/* INFO MAGLIA */
+.sizes{
+    text-align:left;
+    margin:15px 0;
+    padding:15px;
+
+    background:rgba(0,0,0,0.30);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:15px;
+
+    color:#fff;
 }
 
-button:hover {
-  transform: scale(1.05);
+.sizes h3{
+    margin-bottom:10px;
 }
 
-.note {
-  font-size: 12px;
-  color: #888;
-  margin-top: 10px;
+.sizes p{
+    margin-bottom:8px;
+    font-size:13px;
+    line-height:1.4;
+}
+
+/* CONSEGNA */
+.delivery{
+    margin:10px 0 15px;
+    padding:10px;
+    border-radius:12px;
+
+    background:rgba(0,0,0,0.35);
+    color:#fff;
+    font-weight:bold;
+    font-size:13px;
+}
+
+/* INPUT */
+input, select{
+    width:100%;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:12px;
+    border:none;
+    outline:none;
+    font-size:15px;
+}
+
+/* BOTTONE */
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+
+    background:linear-gradient(135deg,#43e97b,#38f9d7);
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.02);
+}
+
+/* NOTE */
+.note{
+    margin-top:12px;
+    font-size:12px;
+    color:#fff;
+    opacity:0.85;
 }
 </style>
 </head>
@@ -75,50 +138,74 @@ button:hover {
 
 <h2>👕 Ordina Maglietta</h2>
 
-<p>Compila i dati e poi invia il messaggio su WhatsApp.<br>
-📎 <b>La foto del design va allegata direttamente su WhatsApp</b></p>
+<div class="description">
+Ordina la tua maglietta personalizzata via WhatsApp.<br>
+📎 Foto design da inviare in chat.
+</div>
 
-<input id="name" placeholder="Nome">
-<input id="email" placeholder="Email">
+<!-- INFO PRIMA DELLA TAGLIA -->
+<div class="sizes">
+<h3>📏 Info Maglietta</h3>
+
+<p><b>Modello:</b> Jack Parker Slim Fit (Action)</p>
+<p>✔ Girocollo bianca</p>
+<p>✔ Vestibilità slim fit (aderente)</p>
+<p>✔ Better Cotton Initiative (BCI)</p>
+<p>⚠ Consigliato una taglia in più se vuoi più comodità</p>
+</div>
+
+<div class="delivery">
+🚚 Consegna: settimana successiva all’ordine
+</div>
+
+<input id="name" type="text" placeholder="Nome">
+<input id="email" type="email" placeholder="Email">
 
 <select id="size">
-  <option value="S">Taglia S</option>
-  <option value="M">Taglia M</option>
-  <option value="L">Taglia L</option>
-  <option value="XL">Taglia XL</option>
+    <option value="S">Taglia S</option>
+    <option value="M">Taglia M</option>
+    <option value="L">Taglia L</option>
+    <option value="XL">Taglia XL</option>
 </select>
 
 <button onclick="send()">📲 Invia su WhatsApp</button>
 
 <div class="note">
-⚠️ Dopo aver aperto WhatsApp, allega la foto manualmente
+⚠ Dopo l’apertura di WhatsApp allega manualmente la foto del design
 </div>
 
 </div>
 
 <script>
-function send() {
+function send(){
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const size = document.getElementById("size").value;
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const size = document.getElementById("size").value;
 
-  const order = Math.floor(Math.random() * 100000);
+    const order = Math.floor(Math.random() * 100000);
+    const phone = "393283849591";
 
-  const phone = "393283849591"; // 🔴 tuo numero WhatsApp
-
-  const message =
+    const message =
 `🔥 NUOVO ORDINE #${order}
+
 👤 Nome: ${name}
 📧 Email: ${email}
 👕 Taglia: ${size}
 
-📎 IMPORTANTE:
-La foto del design verrà inviata in chat (allega dopo questo messaggio)`;
+👕 Modello:
+Jack Parker Slim Fit (Action)
 
-  const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+🚚 Consegna:
+Settimana successiva all’ordine`;
 
-  window.open(url, "_blank");
+    const url =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(url, "_blank");
 }
 </script>
 
